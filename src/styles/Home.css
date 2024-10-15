@@ -1,0 +1,9 @@
+@import '../vars.css';
+
+.home-container {
+    font-family: var(--font-primary), sans-serif;
+}
+
+.home-container h1 {
+    color: var(--color-light);
+}
