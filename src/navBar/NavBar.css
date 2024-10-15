@@ -1,0 +1,121 @@
+@import '../vars.css';
+
+.nav-container {
+    background-color: var(--color-light);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-primary), sans-serif;
+}
+
+.nav-container a {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+/* css for the main links */
+.nav-container .center-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.nav-container .center-links li {
+    list-style: none;
+    margin-left: 2rem;
+}
+
+.nav-container .center-links a {
+    position: relative;
+}
+
+/* underline transition css */
+.nav-container .center-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-dark);
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s ease;
+}
+
+.nav-container .center-links a:hover::after {
+    width: 100%;
+}
+
+.nav-container ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* css for the search bar/box animations */
+.search-box {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    width: 0;
+    opacity: 0;
+}
+
+.search-box.active {
+    width: 350px;
+    opacity: 1;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 2px solid var(--color-dark);
+    border-radius: 4px;
+    background-color: var(--color-light);
+}
+
+.search-box input::placeholder {
+    color: var(--color-dark);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar .icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    color: var(--color-dark);
+    transition: color 0.3s ease;
+}
+
+.search-bar .icon:hover {
+    color: var(--color-bg);
+}
+
+/* css for the rest of the icons after search bar */
+nav ul li button {
+    background-color: transparent;
+    border: none;
+    color: var(--color-dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+nav ul li button:hover {
+    color: var(--color-bg);
+}
+
