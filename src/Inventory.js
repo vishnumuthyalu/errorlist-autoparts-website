@@ -117,4 +117,3 @@ class Inventory {
 // Initialize inventory system
 const inventory = new Inventory();
 inventory.start();
-);
