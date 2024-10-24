@@ -10,8 +10,16 @@
 }
 
 .nav-logo {
-    width: 175px; /* Adjust the size of the logo */
+    width: 100px; /* Adjust the size of the logo */
     height: auto;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    letter-space: 0.1em;
+    font-weight: 500;
+    color: var(--color-dark);
+    text-align: center;
 }
 
 .nav-container a {

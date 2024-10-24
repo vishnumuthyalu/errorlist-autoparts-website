@@ -7,3 +7,35 @@
 .shop-container h1 {
     color: var(--color-light);
 }
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.product-card h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.product-card p {
+    margin: 0.25rem 0;
+    font-size: 1rem;
+}
