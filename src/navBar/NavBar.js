@@ -15,7 +15,9 @@ export const NavBar = () => {
 
     return (
         <nav className={"nav-container"}>
-            <Link to="/">AUTO STORE</Link>
+            <Link to="/">
+                <img src={`${process.env.PUBLIC_URL}/logo2.png`} alt="Auto Store Logo" className="nav-logo" />
+            </Link>
             <div className={"center-links"}>
                 <ul>
                     <li>
