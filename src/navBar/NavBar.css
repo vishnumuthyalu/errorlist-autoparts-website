@@ -9,6 +9,11 @@
     font-family: var(--font-primary), sans-serif;
 }
 
+.nav-logo {
+    width: 175px; /* Adjust the size of the logo */
+    height: auto;
+}
+
 .nav-container a {
     color: var(--color-dark);
     text-decoration: none;
