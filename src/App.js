@@ -8,6 +8,7 @@ import {Contact} from "./pages/Contact";
 import {Account} from "./pages/Account";
 import {Cart} from "./pages/Cart";
 import {Home} from "./pages/Home";
+import {CategoryPage} from "./pages/CategoryPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path={"/contact-us"} element={<Contact />} />
                 <Route path={"/login"} element={<Account />} />
                 <Route path={"/cart"} element={<Cart />} />
+                <Route path="/category/:categoryName" element={<CategoryPage />} />
             </Routes>
         </BrowserRouter>
 

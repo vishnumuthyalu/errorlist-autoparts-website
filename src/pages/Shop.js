@@ -1,44 +1,88 @@
 import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Shop.css';
 import { firestore } from '../firebase.js';
-import { collection, getDocs, doc } from "firebase/firestore";
+import {collection, getDocs, doc, getDoc} from "firebase/firestore";
 
 export const Shop = () => {
 
-    const [Inventory, setInventory] = useState([]);
+    const [inventoryByCategory, setInventoryByCategory] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const main_collection_ref = collection(firestore, "Inventory");
     const document_ref = doc(main_collection_ref, "QGUACBx2urBhlg7BFeFI");
     const sub_collection_ref = collection(document_ref, "Products");
 
+    const categoryMapping = {
+        1 : "Engine & Exhaust",
+        2 : "Electrical & Ignition",
+        3 : "Cooling & Air System",
+        4 : "Braking & Suspension",
+        5 : "Body & Accessories"
+    }
+
     useEffect(() => {
         const getProducts = async () => {
-            const data = await getDocs(sub_collection_ref);
-            const productList = data.docs.map(doc => ({ id: doc.id, ...doc.data() }));  // Corrected doc.data()
-            setInventory(productList);  // Set the inventory data
-            console.log(data);
+            try {
+                setLoading(true);
+                const data = await getDocs(sub_collection_ref);
+                const items = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+                // categorize items so we are not viewing everything at once
+                const categorizedItems = items.reduce((acc, item) => {
+                    const category = categoryMapping[item.Category] || 'Uncategorized'; // Assume 'Uncategorized' if Category is missing
+                    if (!acc[category]) {
+                        acc[category] = [];
+                    }
+                    acc[category].push(item);
+                    return acc;
+                }, {});
+
+                setInventoryByCategory(categorizedItems);
+            } catch (err) {
+                setError("Failed to load products.");
+                console.error("Error fetching products:", err);
+            } finally {
+                setLoading(false);
+            }
         };
 
         getProducts();
-    }, [sub_collection_ref]);
+    }, []);
 
     return (
-        <div className={"shop-container"}>
-            <h1>Shop</h1>
-            <div className={"product-list"}>
-                {Inventory.length > 0 ? (
-                    Inventory.map(product => (
-                        <div key={product.id} className={"product-card"}>
-                            <img src={product.Image} alt={product.Name} className={"product-image"} />
-                            <h2>{product.Name}</h2>
-                            <p>Price: ${product.Price}</p>
-                            <p>Quantity: {product.Quantity}</p>
+        <div className="shop-container">
+            {loading ? (
+                <p>Loading...</p>
+            ) : error ? (
+                <p>{error}</p>
+            ) : (
+                <div>
+                    {Object.keys(inventoryByCategory).map((category) => (
+                        <div key={category} className="category-section">
+                            <h2 className="category-name">{category}</h2>
+                            <div className="product-list">
+                                {inventoryByCategory[category].slice(0, 5).map((product) => (
+                                    <div key={product.id} className="product-card">
+                                        <img src={product.Image} alt={product.Name} className="product-image" />
+                                        <h3>{product.Name}</h3>
+                                        <p>Price: ${product.Price}</p>
+                                        <p>Quantity: {product.Quantity}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <button
+                                className="show-more-button"
+                                onClick={() => navigate(`/category/${category}`)}
+                            >
+                                Show More
+                            </button>
                         </div>
-                    ))
-                ):(
-                    <p>No Products Available</p>
-                )}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

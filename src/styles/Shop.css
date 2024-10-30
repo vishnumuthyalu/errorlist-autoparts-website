@@ -2,6 +2,9 @@
 
 .shop-container {
     font-family: var(--font-primary), sans-serif;
+    margin: 0 auto; /* Center the container */
+    max-width: 1500px;
+    padding: 20px;
 }
 
 .shop-container h1 {
@@ -11,7 +14,9 @@
 .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 4rem;
+    padding: 1rem;
+    margin-bottom: 10px;
 }
 
 .product-card {
@@ -26,6 +31,7 @@
     width: 100%;
     height: auto;
     max-height: 150px;
+    max-width: 100%;
     object-fit: contain;
     margin-bottom: 1rem;
 }
@@ -35,7 +41,25 @@
     margin: 0.5rem 0;
 }
 
+.category-name {
+    color: var(--color-medium);
+    font-size: 2rem;
+}
+
 .product-card p {
     margin: 0.25rem 0;
     font-size: 1rem;
+}
+
+.show-more-button {
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 45px;
+    color: var(--color-bg);
+    background: var(--color-dark);
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
 }
