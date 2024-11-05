@@ -23,7 +23,7 @@ const analytics = getAnalytics(app);
 export const firestore = getFirestore(app);
 export const auth = getAuth(app);  // Initialize Firebase Authentication
 
-// Sign in feature
+// Sign in features
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const signUp = async (email, password) => {
@@ -35,7 +35,7 @@ const signUp = async (email, password) => {
     }
 };
 
-// Sign out feature
+// Sign out features
 import { signOut } from "firebase/auth";
 
 const logOut = async () => {
