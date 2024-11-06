@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { firestore } from '../firebase';
 import { collection, getDocs, doc, query, where } from "firebase/firestore";
 import '../styles/Category.css'
@@ -9,6 +9,7 @@ export const Category = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCategoryItems = async () => {
@@ -67,11 +68,11 @@ export const Category = () => {
                 <div className="product-list">
                     {items.length > 0 ? (
                         items.map((item) => (
-                            <div key={item.id} className="product-card">
+                            <div key={item.id} className="product-card" onClick={() => navigate(`/item/${item.id}`)}>
                                 <img src={item.Image} alt={item.Name} className="product-image"/>
                                 <h3>{item.Name}</h3>
                                 <p>Price: ${item.Price}</p>
-                                <p>Quantity: {item.Quantity}</p>
+                                <button className = "add-to-cart-button">Add To Cart</button>
                             </div>
                         ))
                     ) : (
