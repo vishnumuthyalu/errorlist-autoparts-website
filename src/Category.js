@@ -9,4 +9,3 @@ console.log(sortedByPriceDesc);
 //Sort by Alphabetically via category
 const sortedByCategory = autoParts.sort((a, b) => a.category.localeCompare(b.category));
 console.log(sortedByCategory);
-
