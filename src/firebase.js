@@ -1,8 +1,8 @@
 // Necessary imports
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "@firebase/firestore";
-
+import { getFirestore } from "firebase/firestore";  // Fixed import path
+import { getAuth } from "firebase/auth";  // Import Firebase Authentication
 
 // Firebase configuration
 const firebaseConfig = {
@@ -15,8 +15,34 @@ const firebaseConfig = {
     measurementId: "G-FDJYR4QV42"
 };
 
-// Initialize Firebase & Firestore database
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+// Initialize Firestore and Authentication
 export const firestore = getFirestore(app);
+export const auth = getAuth(app);  // Initialize Firebase Authentication
+
+// Sign in feature
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+const signUp = async (email, password) => {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        console.log("User signed up:", userCredential.user);
+    } catch (error) {
+        console.error("Error signing up:", error);
+    }
+};
+
+// Sign out feature
+import { signOut } from "firebase/auth";
+
+const logOut = async () => {
+    try {
+        await signOut(auth);
+        console.log("User signed out");
+    } catch (error) {
+        console.error("Error signing out:", error);
+    }
+};
