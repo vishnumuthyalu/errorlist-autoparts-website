@@ -9,6 +9,7 @@ import {Account} from "./pages/Account";
 import {Cart} from "./pages/Cart";
 import {Home} from "./pages/Home";
 import {Category} from "./pages/Category";
+import { Item } from './pages/Item.js';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path={"/login"} element={<Account />} />
                 <Route path={"/cart"} element={<Cart />} />
                 <Route path="/category/:categoryName" element={<Category />} />
+                <Route path="/item/:itemId" element={<Item />} />
             </Routes>
         </BrowserRouter>
 

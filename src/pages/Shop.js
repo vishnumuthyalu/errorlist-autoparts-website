@@ -65,11 +65,11 @@ export const Shop = () => {
                             <h2 className="category-name">{category}</h2>
                             <div className="product-list">
                                 {inventoryByCategory[category].slice(0, 5).map((product) => (
-                                    <div key={product.id} className="product-card">
+                                    <div key={product.id} className="product-card" onClick={() => navigate(`/item/${product.id}`)}>
                                         <img src={product.Image} alt={product.Name} className="product-image" />
                                         <h3>{product.Name}</h3>
                                         <p>Price: ${product.Price}</p>
-                                        <p>Quantity: {product.Quantity}</p>
+                                        <button className = "add-to-cart-button">Add To Cart</button>
                                     </div>
                                 ))}
                             </div>
