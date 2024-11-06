@@ -3,6 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";  // Fixed import path
 import { getAuth } from "firebase/auth";  // Import Firebase Authentication
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -23,8 +25,7 @@ const analytics = getAnalytics(app);
 export const firestore = getFirestore(app);
 export const auth = getAuth(app);  // Initialize Firebase Authentication
 
-// Sign in feature
-import { createUserWithEmailAndPassword } from "firebase/auth";
+// Sign in features
 
 const signUp = async (email, password) => {
     try {
@@ -35,8 +36,7 @@ const signUp = async (email, password) => {
     }
 };
 
-// Sign out feature
-import { signOut } from "firebase/auth";
+// Sign out features
 
 const logOut = async () => {
     try {
