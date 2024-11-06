@@ -40,14 +40,16 @@ export const Item = () => {
             ) : error ? (
                 <p>{error}</p>
             ) : item ? (
-                <div className="item-details">
-
-                    <h2>{item.Name}</h2>
+                <div className="item-details-container">
                     <img src={item.Image} alt={item.Name} className="item-image" />
-                    <p>Price: ${item.Price}</p>
-                    <p>Quantity: {item.Quantity}</p>
-                    <button className = "add-to-cart-button">Add To Cart</button>
-                </div>
+                    <div className = "item-details">
+                        <h2>{item.Name}</h2>
+                        <p>Price: ${item.Price}</p>
+                        <p>Quantity: {item.Quantity}</p>
+                        <p>{item.Description}</p>
+                        <button className = "add-to-cart-button">Add To Cart</button>
+                        </div>
+                    </div>
             ) : null}
         </div>
     );
