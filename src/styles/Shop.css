@@ -64,9 +64,7 @@
     cursor: pointer;
 }
 
-.add-to-cart-button{
-    background-color: var(--color-dark);
-    color: var(--color-bg);
+.shop-add-to-cart-button{
     font-size: 1rem;
     font-weight: 700;
     border: none;
@@ -76,4 +74,6 @@
     margin-top: 10px;
     width: 100%;
     text-align: center;
+    color: var(--color-bg);
+    background: var(--color-dark);
 }

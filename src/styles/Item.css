@@ -1,3 +1,6 @@
+@import '../vars.css';
+
+
 .item-page-container {
     display: flex;
     justify-content: center;
@@ -37,16 +40,17 @@ p {
     color: #333;
 }
 
-.add-to-cart-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
+.item-add-to-cart-button{
+    font-size: 1rem;
+    font-weight: 700;
     border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
     cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    color: var(--color-bg);
+    background: var(--color-dark);
 }
 
-.add-to-cart-button:hover {
-    background-color: #0056b3;
-}
