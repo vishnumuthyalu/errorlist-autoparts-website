@@ -62,7 +62,7 @@ select:focus {
     color: #666;
 }
 
-.add-to-cart-button{
+.category-add-to-cart-button{
     background-color: var(--color-dark);
     color: var(--color-bg);
     font-size: 1rem;
@@ -74,4 +74,4 @@ select:focus {
     margin-top: 10px;
     width: 100%;
     text-align: center;
-}
+} 

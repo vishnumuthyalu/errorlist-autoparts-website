@@ -47,7 +47,7 @@ export const Item = () => {
                         <p>Price: ${item.Price}</p>
                         <p>Quantity: {item.Quantity}</p>
                         <p>{item.Description}</p>
-                        <button className = "add-to-cart-button">Add To Cart</button>
+                        <button className = "item-add-to-cart-button">Add To Cart</button>
                         </div>
                     </div>
             ) : null}

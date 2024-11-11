@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Shop.css';
 import { firestore } from '../firebase.js';
-import {collection, getDocs, doc, getDoc} from "firebase/firestore";
+import {collection, getDocs, doc} from "firebase/firestore";
 
 export const Shop = () => {
 
@@ -69,7 +69,7 @@ export const Shop = () => {
                                         <img src={product.Image} alt={product.Name} className="product-image" />
                                         <h3>{product.Name}</h3>
                                         <p>Price: ${product.Price}</p>
-                                        <button className = "add-to-cart-button">Add To Cart</button>
+                                        <button className = "shop-add-to-cart-button">Add To Cart</button>
                                     </div>
                                 ))}
                             </div>
