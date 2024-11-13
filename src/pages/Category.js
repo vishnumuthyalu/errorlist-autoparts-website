@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { firestore } from '../backend/firebase';
-import { collection, getDocs, doc, query, where } from "firebase/firestore";
+import { collection, getDocs, doc, query, where, addDoc } from "firebase/firestore";
 import '../styles/Category.css'
 
 export const Category = () => {
@@ -47,6 +47,22 @@ export const Category = () => {
         return categoryMapping[name] || null;
     };
 
+    const addToCart = async(product) => {
+        const cartRef = collection(firestore, "Cart");
+        const docRef = doc(cartRef, "Checkout");
+        const itemRef = collection(docRef, "Item");
+        try {
+            await addDoc(itemRef, {
+                ...product,
+                quantity: 1, // default to 1 when first added
+                });
+                console.log("Item added to cart:", product);
+            } catch (error) {
+                console.error("Error adding to cart:", error);
+            }
+    };
+
+
     return (
         <div className="category-page-container">
             <h1>{categoryName}</h1>
@@ -72,7 +88,14 @@ export const Category = () => {
                                 <img src={item.Image} alt={item.Name} className="product-image"/>
                                 <h3>{item.Name}</h3>
                                 <p>Price: ${item.Price}</p>
-                                <button className = "add-to-cart-button">Add To Cart</button>
+                                <button className = "category-add-to-cart-button"
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            addToCart(item);
+                                    }}
+                                    >
+                                        Add To Cart
+                                    </button>
                             </div>
                         ))
                     ) : (

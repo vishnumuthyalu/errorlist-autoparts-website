@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Shop.css';
 import { firestore } from '../backend/firebase.js';
-import {collection, getDocs, doc, getDoc} from "firebase/firestore";
+import {collection, getDocs, doc, addDoc} from "firebase/firestore";
 
 export const Shop = () => {
 
@@ -52,6 +52,21 @@ export const Shop = () => {
         getProducts();
     }, []);
 
+    const addToCart = async(product) => {
+        const cartRef = collection(firestore, "Cart");
+        const docRef = doc(cartRef, "Checkout");
+        const itemRef = collection(docRef, "Item");
+        try {
+            await addDoc(itemRef, {
+                ...product,
+                quantity: 1, // default to 1 when first added
+                });
+                console.log("Item added to cart:", product);
+            } catch (error) {
+                console.error("Error adding to cart:", error);
+            }
+    };
+
     return (
         <div className="shop-container">
             {loading ? (
@@ -69,7 +84,14 @@ export const Shop = () => {
                                         <img src={product.Image} alt={product.Name} className="product-image" />
                                         <h3>{product.Name}</h3>
                                         <p>Price: ${product.Price}</p>
-                                        <button className = "add-to-cart-button">Add To Cart</button>
+                                        <button className = "shop-add-to-cart-button"
+                                                onClick={(event) =>{
+                                                    event.stopPropagation();
+                                                    addToCart(product);
+                                                } }
+                                            >
+                                                Add To Cart
+                                            </button>
                                     </div>
                                 ))}
                             </div>
