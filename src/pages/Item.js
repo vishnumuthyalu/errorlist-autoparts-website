@@ -62,7 +62,7 @@ export const Item = () => {
                         <p>Price: ${item.Price}</p>
                         <p>Quantity: {item.Quantity}</p>
                         <p>{item.Description}</p>
-                        <button className = "item-add-to-cart-button"
+                        <button className = "add-to-cart-button"
                             onClick={(event) => {
                                 event.stopPropagation();
                                 addToCart(item);

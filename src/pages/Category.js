@@ -88,7 +88,7 @@ export const Category = () => {
                                 <img src={item.Image} alt={item.Name} className="product-image"/>
                                 <h3>{item.Name}</h3>
                                 <p>Price: ${item.Price}</p>
-                                <button className = "category-add-to-cart-button"
+                                <button className = "add-to-cart-button"
                                         onClick={(event) => {
                                             event.stopPropagation();
                                             addToCart(item);

@@ -5,7 +5,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth }  from '../firebase.js';
+import { auth }  from '../backend/firebase.js';
 
 export const Account = () => {
 
