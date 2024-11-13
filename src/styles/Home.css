@@ -3,18 +3,15 @@
 .home-container {
     font-family: var(--font-primary), sans-serif;
     text-align: start;
-    margin-bottom: 70px;
+    margin: 40px;
 }
 
 .banner-image {
     width: 100%;
     height: auto;
-    object-fit: cover;
-    margin-bottom: 30px;
 }
 
 .featured-name {
-    margin-left: 20px;
     color: var(--color-medium);
     margin-top: 30px;
 }
