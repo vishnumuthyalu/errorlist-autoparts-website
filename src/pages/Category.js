@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { firestore } from '../firebase';
+import { firestore } from '../backend/firebase';
 import { collection, getDocs, doc, query, where } from "firebase/firestore";
 import '../styles/Category.css'
 
@@ -65,7 +65,7 @@ export const Category = () => {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <div className="product-list">
+                <div className="product-list-shop">
                     {items.length > 0 ? (
                         items.map((item) => (
                             <div key={item.id} className="product-card" onClick={() => navigate(`/item/${item.id}`)}>

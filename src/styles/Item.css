@@ -37,16 +37,3 @@ p {
     color: #333;
 }
 
-.add-to-cart-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.add-to-cart-button:hover {
-    background-color: #0056b3;
-}

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Shop.css';
-import { firestore } from '../firebase.js';
+import { firestore } from '../backend/firebase.js';
 import {collection, getDocs, doc, getDoc} from "firebase/firestore";
 
 export const Shop = () => {
@@ -63,7 +63,7 @@ export const Shop = () => {
                     {Object.keys(inventoryByCategory).map((category) => (
                         <div key={category} className="category-section">
                             <h2 className="category-name">{category}</h2>
-                            <div className="product-list">
+                            <div className="product-list-shop">
                                 {inventoryByCategory[category].slice(0, 5).map((product) => (
                                     <div key={product.id} className="product-card" onClick={() => navigate(`/item/${product.id}`)}>
                                         <img src={product.Image} alt={product.Name} className="product-image" />
