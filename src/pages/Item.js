@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { firestore } from '../firebase';
+import { firestore } from '../backend/firebase';
 import { collection, doc, getDoc, addDoc } from "firebase/firestore";
 import '../styles/Item.css';
 
@@ -62,7 +62,7 @@ export const Item = () => {
                         <p>Price: ${item.Price}</p>
                         <p>Quantity: {item.Quantity}</p>
                         <p>{item.Description}</p>
-                        <button className = "item-add-to-cart-button"
+                        <button className = "add-to-cart-button"
                             onClick={(event) => {
                                 event.stopPropagation();
                                 addToCart(item);

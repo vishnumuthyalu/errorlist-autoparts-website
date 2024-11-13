@@ -2,11 +2,40 @@
 
 .home-container {
     font-family: var(--font-primary), sans-serif;
+    text-align: start;
+    margin-bottom: 70px;
 }
 
 .banner-image {
     width: 100%;
     height: auto;
     object-fit: cover;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.featured-name {
+    margin-left: 20px;
+    color: var(--color-medium);
+    margin-top: 30px;
+}
+
+.product-list-home {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+.product-list-home::-webkit-scrollbar {
+    height: 8px;
+}
+
+.product-list-home::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.product-list-home::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }

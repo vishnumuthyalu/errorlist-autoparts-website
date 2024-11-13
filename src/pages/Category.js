@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { firestore } from '../firebase';
+import { firestore } from '../backend/firebase';
 import { collection, getDocs, doc, query, where, addDoc } from "firebase/firestore";
 import '../styles/Category.css'
 
@@ -81,14 +81,14 @@ export const Category = () => {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <div className="product-list">
+                <div className="product-list-shop">
                     {items.length > 0 ? (
                         items.map((item) => (
                             <div key={item.id} className="product-card" onClick={() => navigate(`/item/${item.id}`)}>
                                 <img src={item.Image} alt={item.Name} className="product-image"/>
                                 <h3>{item.Name}</h3>
                                 <p>Price: ${item.Price}</p>
-                                <button className = "category-add-to-cart-button"
+                                <button className = "add-to-cart-button"
                                         onClick={(event) => {
                                             event.stopPropagation();
                                             addToCart(item);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Cart.css'
-import { firestore } from '../firebase';
+import { firestore } from '../backend/firebase';
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
