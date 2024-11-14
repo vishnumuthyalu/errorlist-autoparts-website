@@ -9,6 +9,7 @@ export const Category = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [sortOrder, setSortOrder] = useState('default'); // Added sorting state
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,7 +48,7 @@ export const Category = () => {
         return categoryMapping[name] || null;
     };
 
-    const addToCart = async(product) => {
+    const addToCart = async (product) => {
         const cartRef = collection(firestore, "Cart");
         const docRef = doc(cartRef, "Checkout");
         const itemRef = collection(docRef, "Item");
@@ -55,13 +56,26 @@ export const Category = () => {
             await addDoc(itemRef, {
                 ...product,
                 quantity: 1, // default to 1 when first added
-                });
-                console.log("Item added to cart:", product);
-            } catch (error) {
-                console.error("Error adding to cart:", error);
-            }
+            });
+            console.log("Item added to cart:", product);
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+        }
     };
 
+    const handleSortChange = (e) => {
+        setSortOrder(e.target.value); // Added sorting change handler
+    };
+
+    // Sorting the items based on sortOrder
+    const sortedItems = [...items];
+    if (sortOrder === 'low-to-high') {
+        sortedItems.sort((a, b) => a.Price - b.Price);
+    } else if (sortOrder === 'high-to-low') {
+        sortedItems.sort((a, b) => b.Price - a.Price);
+    } else if (sortOrder === 'default') {
+        sortedItems.sort((a, b) => a.Name.localeCompare(b.Name));
+    }
 
     return (
         <div className="category-page-container">
@@ -69,8 +83,8 @@ export const Category = () => {
             <div className="sort-dropdown">
                 <label htmlFor="sortOrder">Sort by Price: </label>
                 <div className="custom-dropdown">
-                    <select id="sortOrder">
-                        <option value="low-to-high">Default</option>
+                    <select id="sortOrder" value={sortOrder} onChange={handleSortChange}>
+                        <option value="default">Default</option>
                         <option value="low-to-high">Low to High</option>
                         <option value="high-to-low">High to Low</option>
                     </select>
@@ -82,20 +96,20 @@ export const Category = () => {
                 <p>{error}</p>
             ) : (
                 <div className="product-list-shop">
-                    {items.length > 0 ? (
-                        items.map((item) => (
+                    {sortedItems.length > 0 ? (
+                        sortedItems.map((item) => (
                             <div key={item.id} className="product-card" onClick={() => navigate(`/item/${item.id}`)}>
                                 <img src={item.Image} alt={item.Name} className="product-image"/>
                                 <h3>{item.Name}</h3>
                                 <p>Price: ${item.Price}</p>
-                                <button className = "add-to-cart-button"
+                                <button className="add-to-cart-button"
                                         onClick={(event) => {
                                             event.stopPropagation();
                                             addToCart(item);
-                                    }}
-                                    >
-                                        Add To Cart
-                                    </button>
+                                        }}
+                                >
+                                    Add To Cart
+                                </button>
                             </div>
                         ))
                     ) : (
@@ -106,4 +120,3 @@ export const Category = () => {
         </div>
     );
 };
-
