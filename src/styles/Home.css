@@ -4,6 +4,7 @@
     font-family: var(--font-primary), sans-serif;
     text-align: start;
     margin: 40px;
+    padding-bottom: 100px;
 }
 
 .banner-image {
@@ -22,6 +23,7 @@
     gap: 1.5rem;
     padding: 1rem;
     scroll-snap-type: x mandatory;
+    padding-bottom: 30px;
 }
 
 .product-list-home::-webkit-scrollbar {
@@ -34,5 +36,24 @@
 }
 
 .product-list-home::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+.service-list-home {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem;
+    padding-bottom: 30px;
+}
+
+.service-list-home::-webkit-scrollbar {
+    height: 8px;
+}
+.service-list-home::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.service-list-home::-webkit-scrollbar-thumb:hover {
     background: #888;
 }

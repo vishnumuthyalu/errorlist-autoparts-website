@@ -59,25 +59,30 @@ export const Home = () => {
                     <img className={"banner-image"} src={banner} alt={"banner for home page"}/>
                     <div className={"featured-items"}>
                         <h1 className={"featured-name"}>Featured Products</h1>
-                        <div className="product-list-home">
+                        <div className={"product-list-home"}>
                             {featuredProducts.map((product) => (
-                                <div key={product.id} className="product-card"
+                                <div key={product.id} className={"product-card"}
                                      onClick={() => navigate(`/item/${product.id}`)}>
-                                    <img src={product.Image} alt={product.Name} className="product-image"/>
+                                    <img src={product.Image} alt={product.Name} className={"product-image"}/>
                                     <h3>{product.Name}</h3>
                                     <p>Price: ${product.Price}</p>
-                                    <button className="add-to-cart-button">Add To Cart</button>
+                                    <button className={"add-to-cart-button"}>Add To Cart</button>
                                 </div>
                             ))}
                         </div>
                         <h1 className={"featured-name"}>Featured Services</h1>
-                        <div className="service-list">
+                        <div className={"service-list-home"}>
                             {featuredServices.map((service) => (
                                 <div key={service.id} className={"service-card"}
-                                     onClick={() => navigate(`/item/${service.id}`)}>
+                                     onClick={() => navigate(`/service/${service.id}`)}>
                                     <img src={service.Image} alt={service.Name} className={"service-image"}/>
                                     <h3 className={"service-name"}>{service.Name}</h3>
-                                    <button className="book-service-btn">Book Now</button>
+                                    <button
+                                        className="more-info-btn"
+                                        onClick={() => navigate(`/service/${service.id}`)}
+                                    >
+                                        More Info
+                                    </button>
                                 </div>
                             ))}
                         </div>
