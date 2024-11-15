@@ -79,7 +79,7 @@ export const Shop = () => {
                         <div key={category} className="category-section">
                             <h2 className="category-name">{category}</h2>
                             <div className="product-list-shop">
-                                {inventoryByCategory[category].slice(0, 5).map((product) => (
+                                {inventoryByCategory[category].slice(0, 4).map((product) => (
                                     <div key={product.id} className="product-card" onClick={() => navigate(`/item/${product.id}`)}>
                                         <img src={product.Image} alt={product.Name} className="product-image" />
                                         <h3>{product.Name}</h3>
