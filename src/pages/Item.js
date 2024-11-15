@@ -59,9 +59,9 @@ export const Item = () => {
                     <img src={item.Image} alt={item.Name} className="item-image" />
                     <div className = "item-details">
                         <h2>{item.Name}</h2>
-                        <p>Price: ${item.Price}</p>
-                        <p>Quantity: {item.Quantity}</p>
-                        <p>{item.Description}</p>
+                        <p className={"item-price"}>Price: ${item.Price}</p>
+                        <p className={"item-quantity"}>{item.Quantity} left in stock</p>
+                        <p className={"item-des"}>{item.Description}</p>
                         <button className = "add-to-cart-button"
                             onClick={(event) => {
                                 event.stopPropagation();
