@@ -42,24 +42,24 @@ export const ServiceDetails = () => {
     };
 
     return (
-        <div className="service-details-container">
+        <div className="indiv-service-container">
             {loading ? (
                 <p>Loading...</p>
             ) : error ? (
                 <p>{error}</p>
             ) : service ? (
-                <div className="service-details-card">
-                    <img src={service.Image} alt={service.Name} className="service-details-image" />
-                    <h2>{service.Name}</h2>
-                    <p>{service.Description}</p>
-                    <p>Price: ${service.Price}</p>
-                    <button className="book-service-button" onClick={handleBookService}>
-                        Book Service
-                    </button>
+                <div className={"service-details-container"}>
+                    <img src={service.Image} alt={service.Name} className="service-details-image"/>
+                    <div className="service-details-card">
+                        <h2 className={"service-name"}>{service.Name}</h2>
+                        <p className={"service-price"}>Price: ${service.Price}</p>
+                        <p className={"service-des"}>{service.Description}</p>
+                        <button className="more-info-btn" onClick={handleBookService}>
+                            Book Service
+                        </button>
+                    </div>
                 </div>
-            ) : (
-                <p>Service not found.</p>
-            )}
+            ) : null}
         </div>
     );
 };

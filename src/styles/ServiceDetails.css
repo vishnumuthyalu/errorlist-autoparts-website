@@ -1,34 +1,46 @@
 .service-details-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
     padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
 }
 
 .service-details-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    background-color: #f9f9f9;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.service-name {
+    font-size: 2.5rem;
+    color: var(--color-medium);
+    margin-bottom: 10px;
 }
 
 .service-details-image {
-    max-width: 100%;
+    width: 500px;
     height: auto;
     border-radius: 8px;
+    object-fit: cover;
 }
 
-.book-service-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.service-price {
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    font-weight: bold;
 }
 
-.book-service-button:hover {
-    background-color: #0056b3;
+.service-des {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 30px;
 }
+
