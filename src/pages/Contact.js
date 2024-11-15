@@ -4,8 +4,8 @@ import riaImage from '../assets/ria.jpg';
 import connorImage from '../assets/connor.jpg';
 import thanushImage from '../assets/thanush.jpg';
 import vishnuImage from '../assets/vishnu.jpg';
-//import austinImage from '../assets/.jpg';
-//import kosisochukwuImage from '../assets/.jpg';
+import austinImage from '../assets/austin.jpg';
+import kosisochukwuImage from '../assets/kosisochukwu.jpg';
 
 export const Contact = () => {
     const teamMembers = [
@@ -13,8 +13,8 @@ export const Contact = () => {
         {name: "Connor Haubrich", email: "connor.haubrich@my.utsa.edu", image: connorImage},
         {name: "Thanush Koshekay", email: "thanush.koshekay@my.utsa.edu", image: thanushImage},
         {name: "Vishnu Muthyalu", email: "vishnu.muthyalu@my.utsa.edu", image: vishnuImage},
-        {name: "Austin Barthel", email: "email@my.utsa.edu", image: ""},
-        {name: "Kosisochukwu Mogekwu", email: "email@my.utsa.edu", image: ""}
+        {name: "Austin Barthel", email: "barthelaus@gmail.com", image: austinImage},
+        {name: "Kosisochukwu Mogekwu", email: "kosimogs@gmail.com", image: kosisochukwuImage }
         
     ]
     return (

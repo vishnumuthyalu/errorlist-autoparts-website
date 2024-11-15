@@ -1,9 +1,13 @@
 @import '../vars.css';
 
-.cart-container {
-    font-family: var(--font-primary), sans-serif;
+.cart-page {
+    display: flex;
+    gap: 20px;
     padding: 20px;
-    align-items: center;
+}
+
+.cart-container {
+    flex: 2;
 }
 
 .cart-list {
@@ -14,6 +18,7 @@
 .cart-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -21,23 +26,45 @@
 }
 
 .cart-item-image {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px; 
     object-fit: cover;
     border-radius: 5px;
     margin-right: 15px;
 }
 
 .cart-item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1;
 }
 
-.cart-summary {
-    margin-top: 20px;
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-controls button {
+    padding: 5px 10px;
+    border: none;
+    background-color: var(--color-dark);
+    color: var(--color-bg);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkout-container {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     font-size: 1.1rem;
 }
 
 .checkout-button {
+    width: 100%;
     padding: 12px 20px;
     background-color: var(--color-dark);
     color: var(--color-bg);
@@ -46,4 +73,23 @@
     font-size: 1rem;
     cursor: pointer;
     margin-top: 15px;
+}
+
+.cart-container h1, .checkout-container h2{
+    color: var(--color-medium);
+}
+
+.remove-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.remove-button:hover {
+    background-color: darkred;
 }
