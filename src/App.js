@@ -10,6 +10,7 @@ import {Cart} from "./pages/Cart";
 import {Home} from "./pages/Home";
 import {Category} from "./pages/Category";
 import { Item } from './pages/Item.js';
+import {ServiceDetails} from './pages/ServiceDetails'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path={"/cart"} element={<Cart />} />
                 <Route path="/category/:categoryName" element={<Category />} />
                 <Route path="/item/:itemId" element={<Item />} />
+                <Route path="/service/:serviceId" element={<ServiceDetails />} />
             </Routes>
         </BrowserRouter>
 
