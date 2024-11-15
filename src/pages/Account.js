@@ -3,6 +3,7 @@ import '../styles/Account.css';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
+import profilePic from '../assets/user-profile-pic.png'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../backend/firebase.js';
 
@@ -10,15 +11,25 @@ export const Account = () => {
     const [action, setAction] = useState("Sign up");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useState(null);  // To store the logged-in user
+    const [user, setUser] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    // Handle the signup process
     const handleSignup = async () => {
         if (action === "Sign up") {
+            setErrorMessage("");
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 console.log("User signed up:", userCredential.user);
             } catch (error) {
+                if (error.code === "auth/email-already-in-use") {
+                    setErrorMessage("An account with this email already exists.");
+                } else if (error.code === "auth/invalid-email") {
+                    setErrorMessage("Please enter a valid email.");
+                } else if (error.code === "auth/weak-password") {
+                    setErrorMessage("Password should be at least 6 characters long.");
+                } else {
+                    setErrorMessage("An unexpected error occurred. Please try again.");
+                }
                 console.error("Error signing up:", error);
             }
         } else {
@@ -33,6 +44,15 @@ export const Account = () => {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 console.log("User logged in:", userCredential.user);
             } catch (error) {
+                if (error.code === "auth/user-not-found") {
+                    setErrorMessage("No account found with this email.");
+                } else if (error.code === "auth/wrong-password") {
+                    setErrorMessage("Incorrect password. Please try again.");
+                } else if (error.code === "auth/invalid-email") {
+                    setErrorMessage("Please enter a valid email.");
+                } else {
+                    setErrorMessage("An unexpected error occurred. Please try again.");
+                }
                 console.error("Error logging in:", error);
             }
         } else {
@@ -40,40 +60,35 @@ export const Account = () => {
         }
     };
 
-    // Handle the sign-out process
     const handleSignOut = async () => {
         try {
             await signOut(auth);
             console.log("User signed out");
-            setUser(null);  // Clear the user state
+            setUser(null);
         } catch (error) {
             console.error("Error signing out:", error);
         }
     };
 
-    // Track authentication state (listen for login/logout events)
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
-                setUser(currentUser);  // Set the logged-in user in the state
+                setUser(currentUser);
             } else {
-                setUser(null);  // Clear the user state if no one is logged in
+                setUser(null);
             }
         });
 
-        return () => unsubscribe();  // Cleanup listener on component unmount
+        return () => unsubscribe();
     }, []);
 
     if (user) {
-        // If the user is logged in, show their account info and sign-out option
         return (
-            <div className="account-info-container">
-                <h2>Welcome, {user.email}</h2>
-                <p>Your account information:</p>
-                <ul>
-                    <li>Email: {user.email}</li>
-                    {/* You can add more user information here, if needed */}
-                </ul>
+            <div className="login-container">
+                <h1>Welcome!</h1>
+                <img className={"profile-pic"} src={profilePic} alt={"generic profile picture"}/>
+                <h2>Your account information:</h2>
+                    <p>Email: {user.email}</p>
                 <div className="submit-container">
                     <button className="submit" onClick={handleSignOut}>Sign Out</button>
                 </div>
@@ -81,7 +96,6 @@ export const Account = () => {
         );
     }
 
-    // If no user is logged in, show the sign-up and login form
     return (
         <div className="login-container">
             <div className="header">
@@ -91,17 +105,38 @@ export const Account = () => {
             <div className="inputs">
                 <div className="input">
                     <EmailIcon />
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            setErrorMessage("");
+                        }}
+                        placeholder="Email" />
                 </div>
+                {action === "Sign up" && (
+                    <div className="input">
+                        <PersonIcon/>
+                        <input
+                            type="username"
+                            placeholder="Username"
+                            onChange={() => setErrorMessage("")}
+                        />
+                    </div>
+                )}
                 <div className="input">
-                    <PersonIcon />
-                    <input type="username" placeholder="Username" disabled /> {/* You can enable this for signup */}
-                </div>
-                <div className="input">
-                    <LockIcon />
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                    <LockIcon/>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setErrorMessage("");
+                        }}
+                        placeholder="Password" />
                 </div>
             </div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
             <div className="submit-container">
                 <div className={action === "Login" ? "submit gray" : "submit"} onClick={handleSignup}>Sign Up</div>
                 <div className={action === "Sign up" ? "submit gray" : "submit"} onClick={handleLogin}>Login</div>
