@@ -57,3 +57,17 @@
     color: var(--color-bg);
     background: var(--color-dark);
 }
+
+.show-more-button {
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 45px;
+    color: var(--color-dark);
+    background: var(--color-light);
+    border-radius: 8px;
+    border-color: var(--color-light);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}

@@ -11,6 +11,7 @@ import {Home} from "./pages/Home";
 import {Category} from "./pages/Category";
 import { Item } from './pages/Item.js';
 import {ServiceDetails} from './pages/ServiceDetails'
+import {BookService} from './pages/BookService';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/category/:categoryName" element={<Category />} />
                 <Route path="/item/:itemId" element={<Item />} />
                 <Route path="/service/:serviceId" element={<ServiceDetails />} />
+                <Route path="/book-service" element={<BookService />} />
             </Routes>
         </BrowserRouter>
 

@@ -37,9 +37,17 @@ export const ServiceDetails = () => {
         fetchServiceDetails();
     }, [serviceId]);
 
+    <button
+        className="book-service-button"
+        onClick={() => navigate('/book-service')}
+    >
+        Book Service
+    </button>
+
     const handleBookService = () => {
-        alert("Booking service feature coming soon!");
+        navigate('/book-service');
     };
+
 
     return (
         <div className="service-details-container">
