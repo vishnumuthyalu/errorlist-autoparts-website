@@ -18,7 +18,7 @@
     gap: 1px;
 }
 
-.service-name {
+.service-details-card h2 {
     font-size: 2.5rem;
     color: var(--color-medium);
     margin-bottom: 10px;

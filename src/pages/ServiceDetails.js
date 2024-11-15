@@ -51,7 +51,7 @@ export const ServiceDetails = () => {
                 <div className={"service-details-container"}>
                     <img src={service.Image} alt={service.Name} className="service-details-image"/>
                     <div className="service-details-card">
-                        <h2 className={"service-name"}>{service.Name}</h2>
+                        <h2>{service.Name}</h2>
                         <p className={"service-price"}>Price: ${service.Price}</p>
                         <p className={"service-des"}>{service.Description}</p>
                         <button className="more-info-btn" onClick={handleBookService}>
