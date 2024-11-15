@@ -9,7 +9,26 @@
     width: 1000px;
     background: var(--color-dark);
     padding-bottom: 30px;
-    border-radius: 10px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.login-container h1 {
+    color: var(--color-bg);
+    font-size: 4rem;
+}
+
+.login-container h2 {
+    color: var(--color-bg);
+}
+
+.login-container p {
+    color: var(--color-bg);
+    font-weight: bold;
+}
+
+.profile-pic {
+    width: 15%;
 }
 
 .header {
@@ -76,15 +95,25 @@
     justify-content: center;
     align-items: center;
     width: 220px;
-    height: 59px;
+    height: 50px;
     color: var(--color-bg);
-    background: var(--color-light);
-    border-radius: 50px;
+    background: var(--color-medium);
+    border-radius: 8px;
+    border-color: var(--color-medium);
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
 }
-    .gray {
-        background: #676767;
-        color: #EAEAEA;
-    }
+
+.gray {
+    background: #676767;
+    color: #EAEAEA;
+}
+
+.error-message {
+    margin-top: 20px;
+    color: var(--color-light);
+    font-weight: 500;
+}
+
+
