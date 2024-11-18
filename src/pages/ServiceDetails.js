@@ -37,9 +37,7 @@ export const ServiceDetails = () => {
         fetchServiceDetails();
     }, [serviceId]);
 
-    const handleBookService = () => {
-        alert("Booking service feature coming soon!");
-    };
+
 
     return (
         <div className="indiv-service-container">
@@ -54,7 +52,7 @@ export const ServiceDetails = () => {
                         <h2>{service.Name}</h2>
                         <p className={"service-price"}>Price: ${service.Price}</p>
                         <p className={"service-des"}>{service.Description}</p>
-                        <button className="more-info-btn" onClick={handleBookService}>
+                        <button className="more-info-btn" onClick={() => navigate(`/newbookservice`)}>
                             Book Service
                         </button>
                     </div>
