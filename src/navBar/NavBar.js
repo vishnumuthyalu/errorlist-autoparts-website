@@ -5,12 +5,23 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import LoginIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {query} from "firebase/firestore";
+import { useNavigate } from 'react-router-dom';
 
 export const NavBar = () => {
+    const navigate = useNavigate();
+    const [query, setQuery] = useState('');
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     const toggleSearch = () => {
         setIsSearchOpen(prevState => !prevState);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && query.trim()) {
+            e.preventDefault(); // Prevent form submission or page refresh
+            navigate(`/search?query=${encodeURIComponent(query)}`);
+        }
     };
 
     return (
@@ -37,9 +48,10 @@ export const NavBar = () => {
             </div>
             <div className={"search-bar"}>
                 <div className={`search-box ${isSearchOpen ? 'active' : ''}`}>
-                    <input type={"text"} placeholder={"Search here"}/>
+                    <input type={"text"} placeholder={"Search here"} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown}/>
                 </div>
-                <button className={"icon"} onClick={toggleSearch} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
+                <button className={"icon"} onClick={toggleSearch}
+                        style={{background: 'none', border: 'none', cursor: 'pointer'}}>
                     {isSearchOpen ? <CloseIcon/> : <SearchIcon/>}
                 </button>
             </div>
