@@ -3,7 +3,7 @@ import {NavBar} from "./navBar/NavBar.js";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Shop} from "./pages/Shop";
 import {Services} from "./pages/Services";
-import {ForYourCar} from "./pages/ForYourCar";
+import { ForYourCar } from "./pages/ForYourCar";
 import {Contact} from "./pages/Contact";
 import {Account} from "./pages/Account";
 import {Cart} from "./pages/Cart";

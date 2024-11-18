@@ -1,9 +1,68 @@
-@import '../vars.css';
-
-.your-car-container {
-    font-family: var(--font-primary), sans-serif;
+.for-your-car-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.your-car-container h1 {
-    color: var(--color-light);
+h1 {
+  color: var(--color-medium);
+  margin-bottom: 20px;
+}
+
+.car-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--color-light);
+}
+
+input {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid var(--color-light);
+  border-radius: 4px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--color-medium);
+  box-shadow: 0 0 3px var(--color-medium);
+}
+
+.submit-button {
+  padding: 12px 20px;
+  background-color: var(--color-light);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--color-medium);
+}
+
+.thank-you-message {
+  font-size: 16px;
+  color: var(--color-light);
+}
+
+.note {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
 }
