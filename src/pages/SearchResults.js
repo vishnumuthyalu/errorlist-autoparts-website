@@ -26,13 +26,23 @@ export const SearchResults = () => {
 
         try {
             const subCollectionRef = collection(firestore, "Inventory/QGUACBx2urBhlg7BFeFI/Products");
-            const dbQuery = query(subCollectionRef, where("Name", "==", searchTerm));
+            const dbQuery = query(subCollectionRef);
 
             const snapshot = await getDocs(dbQuery);
+            const search = String(searchTerm).toLowerCase();
 
             if (!snapshot.empty) {
                 const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-                setResults(data);
+                let sortedData = [];
+                if(search.includes(' ')){
+                    const splitSearch = search.split(' ');
+                    sortedData = data.filter(doc => splitSearch.some(element => doc.Name.toLowerCase().includes(element)));
+                }
+                else{
+                    sortedData = data.filter(doc => doc.Name.toLowerCase().includes(search));
+                }
+
+                setResults(sortedData);
             } else {
                 setResults([]);
             }
