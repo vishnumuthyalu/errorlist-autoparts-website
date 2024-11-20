@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { firestore } from '../backend/firebase';
-import { collection, getDocs, doc, query, where, addDoc } from "firebase/firestore";
+import { collection, getDocs, doc, query, where, setDoc} from "firebase/firestore";
 import '../styles/Category.css'
 
 export const Category = () => {
@@ -52,16 +52,19 @@ export const Category = () => {
         const cartRef = collection(firestore, "Cart");
         const docRef = doc(cartRef, "Checkout");
         const itemRef = collection(docRef, "Item");
+    
         try {
-            await addDoc(itemRef, {
+            // Use product.Name as the document ID
+            await setDoc(doc(itemRef, product.Name), {
                 ...product,
-                quantity: 1, // default to 1 when first added
+                quantity: 1, // Default quantity when first added
             });
             console.log("Item added to cart:", product);
         } catch (error) {
             console.error("Error adding to cart:", error);
         }
     };
+    
 
     const handleSortChange = (e) => {
         setSortOrder(e.target.value); // Added sorting change handler

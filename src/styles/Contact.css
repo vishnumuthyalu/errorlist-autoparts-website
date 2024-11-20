@@ -79,3 +79,7 @@
     color: var(--color-bg);
     background: var(--color-dark);
 }
+
+.email-button:hover {
+    background-color: #013842;
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { firestore } from '../backend/firebase';
-import { collection, doc, getDoc, addDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import '../styles/Item.css';
 
 export const Item = () => {
@@ -33,20 +33,23 @@ export const Item = () => {
         fetchItem();
     }, [itemId]);
 
-    const addToCart = async(product) => {
+    const addToCart = async (product) => {
         const cartRef = collection(firestore, "Cart");
         const docRef = doc(cartRef, "Checkout");
         const itemRef = collection(docRef, "Item");
+    
         try {
-            await addDoc(itemRef, {
+            // Use product.Name as the document ID
+            await setDoc(doc(itemRef, product.Name), {
                 ...product,
-                quantity: 1, // default to 1 when first added
-                });
-                console.log("Item added to cart:", product);
-            } catch (error) {
-                console.error("Error adding to cart:", error);
-            }
+                quantity: 1, // Default quantity when first added
+            });
+            console.log("Item added to cart:", product);
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+        }
     };
+    
 
     return (
         <div className="item-page-container">

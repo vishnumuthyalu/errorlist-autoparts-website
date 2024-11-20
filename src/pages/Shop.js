@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Shop.css';
 import { firestore } from '../backend/firebase.js';
-import {collection, getDocs, doc, addDoc} from "firebase/firestore";
+import {collection, getDocs, doc, setDoc} from "firebase/firestore";
 
 export const Shop = () => {
 
@@ -52,20 +52,23 @@ export const Shop = () => {
         getProducts();
     }, []);
 
-    const addToCart = async(product) => {
+    const addToCart = async (product) => {
         const cartRef = collection(firestore, "Cart");
         const docRef = doc(cartRef, "Checkout");
         const itemRef = collection(docRef, "Item");
+    
         try {
-            await addDoc(itemRef, {
+            // Use product.Name as the document ID
+            await setDoc(doc(itemRef, product.Name), {
                 ...product,
-                quantity: 1, // default to 1 when first added
-                });
-                console.log("Item added to cart:", product);
-            } catch (error) {
-                console.error("Error adding to cart:", error);
-            }
+                quantity: 1, // Default quantity when first added
+            });
+            console.log("Item added to cart:", product);
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+        }
     };
+    
 
     return (
         <div className="shop-container">
