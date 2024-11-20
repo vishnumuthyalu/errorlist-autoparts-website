@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Cart.css';
 import { firestore } from '../backend/firebase';
-import { collection, getDocs, deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, updateDoc} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
@@ -27,17 +27,31 @@ export const Cart = () => {
     };
 
     const handleQuantityChange = async (itemId, delta) => {
+        
         const updatedItems = cartItems.map((item) => {
             if (item.id === itemId) {
                 const newQuantity = Math.max(item.quantity + delta, 1);
-                setDoc(doc(firestore, "Cart", "Checkout", "Item", itemId), {
-                    quantity: newQuantity
+                updateDoc(doc(firestore, "Cart", "Checkout", "Item", itemId), {
+                   quantity: newQuantity
                 });
                 return { ...item, quantity: newQuantity };
             }
             return item;
         });
         setCartItems(updatedItems);
+    };
+
+    const removeItem = async (itemId) => {
+        try {
+            // Remove the item from Firebase
+            await deleteDoc(doc(firestore, "Cart", "Checkout", "Item", itemId));
+            
+            // Remove the item from local state
+            setCartItems(cartItems.filter((item) => item.id !== itemId));
+            console.log(`Item with ID ${itemId} removed successfully.`);
+        } catch (error) {
+            console.error("Error removing item:", error);
+        }
     };
 
     const handleCheckout = async () => {
@@ -47,8 +61,6 @@ export const Cart = () => {
             const itemRef = collection(docRef, "Item");
             const cartSnapshot = await getDocs(itemRef);
             
-            
-          
             cartSnapshot.forEach(async (item) => {
                 await deleteDoc(doc(itemRef, item.id));
             });
@@ -85,7 +97,8 @@ export const Cart = () => {
                                     <span>{item.quantity}</span>
                                     <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
                                 </div>
-                                <button className="remove-button">Remove</button>
+                                <button className="remove-button" onClick={() => removeItem(item.id)}>Remove</button>
+                                
                             </li>
                         ))}
                     </ul>
