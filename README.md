@@ -1,73 +1,114 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GEARBOX SUPPLY
 
-## Available Scripts
+Welcome to the **GEARBOX SUPPLY** Website repository!  
+This guide will help you set up and run the project on your local machine.
 
-In the project directory, you can run:
+## Prerequisites
 
-### `npm start`
+Before cloning the repository, ensure the following tools are installed on your computer:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Git**: Download and install Git from [Git Downloads](https://git-scm.com/downloads) if not already installed.
+2. **Node.js and npm**: Download and install the latest stable version of Node.js (which includes npm) from [Node.js Official Website](https://nodejs.org/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Verify installation by running the following commands in your terminal:
 
-### `npm test`
+```bash
+node -v
+npm -v
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+These commands should return the installed versions of Node.js and npm.
 
-### `npm run build`
+## Cloning the Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow these steps to clone the repository to your local machine:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Open a terminal (Command Prompt, PowerShell, or any terminal of your choice).
+2. Navigate to the directory where you want to clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    cd path/to/your/directory
+    ```
 
-### `npm run eject`
+3. Clone the repository using Git:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    git clone https://github.com/vishnumuthyalu/errorlist-autoparts-website.git
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Alternative:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you are using **VS Code** or **IntelliJ** as your preferred IDE, you can directly clone through the IDE interface using the same URL.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [VS Code Git Integration](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git)
+- [IntelliJ Git Integration](https://blog.jetbrains.com/idea/2020/10/clone-a-project-from-github/)
 
-## Learn More
+## Installing Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Once the repository is cloned, follow these steps to install the required dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Navigate to the project directory:
 
-### Code Splitting
+    ```bash
+    cd errorlist-autoparts-website
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Install all the dependencies listed in the `package.json` file:
 
-### Analyzing the Bundle Size
+    ```bash
+    npm install
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Running the Project Locally
 
-### Making a Progressive Web App
+To run the project on your local machine:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Start the React development server:
 
-### Advanced Configuration
+    ```bash
+    npm start
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. By default, the app will open automatically in your default web browser.  
+   If it does not, open a browser and navigate to:
 
-### Deployment, we will be deploying on firebase!
+    ```text
+    http://localhost:3000
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Notes
 
-### `npm run build` fails to minify
+- Ensure that no other application is using **port 3000** on your machine.  
+  If the port is in use, React will prompt you to use a different port.
+- If you encounter issues during setup or while running the app, double-check the installed versions of Node.js and npm to ensure compatibility.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Troubleshooting
 
+If you encounter any issues:
 
-Vishnu : This is a test to see if I am able to push changes to our github repo 
+1. Delete the `node_modules` folder and `package-lock.json` file, then reinstall dependencies:
+
+    ```bash
+    rm -rf node_modules package-lock.json
+    npm install
+    ```
+
+2. Clear the npm cache:
+
+    ```bash
+    npm cache clean --force
+    ```
+
+3. Restart the development server.
+
+## For Further Questions and Enquiries
+
+Feel free to reach out to the following team members for assistance:
+
+- **Ria James**: [ria.james@my.utsa.edu](mailto:ria.james@my.utsa.edu)
+- **Connor Haubrich**: [connor.haubrich@my.utsa.edu](mailto:connor.haubrich@my.utsa.edu)
+- **Thanush Koshekay**: [thanush.koshekay@my.utsa.edu](mailto:thanush.koshekay@my.utsa.edu)
+- **Vishnu Muthyalu**: [vishnu.muthyalu@my.utsa.edu](mailto:vishnu.muthyalu@my.utsa.edu)
+- **Austin Barthel**: [barthelaus@gmail.com](mailto:barthelaus@gmail.com)
+- **Kosisochukwu Mogekwu**: [kosimogs@gmail.com](mailto:kosimogs@gmail.com)
