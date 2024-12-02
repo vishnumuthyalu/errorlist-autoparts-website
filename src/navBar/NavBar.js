@@ -5,7 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import LoginIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {query} from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
 export const NavBar = () => {
@@ -42,8 +41,12 @@ export const NavBar = () => {
                         <Link to={"/for-your-car"}>FOR YOUR CAR</Link>
                     </li>
                     <li>
+                        <Link to={"/ChatBot"}>ASK GEARBOT</Link>
+                    </li>
+                    <li>
                         <Link to={"/contact-us"}>CONTACT US</Link>
                     </li>
+                    
                 </ul>
             </div>
             <div className={"search-bar"}>

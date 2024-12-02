@@ -64,6 +64,7 @@ export const Shop = () => {
                 quantity: 1, // Default quantity when first added
             });
             console.log("Item added to cart:", product);
+            alert(product.Name + " has been added to the cart.");
         } catch (error) {
             console.error("Error adding to cart:", error);
         }

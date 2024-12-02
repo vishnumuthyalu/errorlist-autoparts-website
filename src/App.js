@@ -13,6 +13,7 @@ import { Item } from './pages/Item.js';
 import {ServiceDetails} from './pages/ServiceDetails'
 import {NewBookService} from './pages/NewBookService';
 import {SearchResults} from "./pages/SearchResults";
+import {ChatBot} from "./pages/ChatBot";
 function App() {
   return (
     <div className="App">
@@ -24,13 +25,14 @@ function App() {
                 <Route path={"/shop"} element={<Shop />} />
                 <Route path={"/services"} element={<Services />} />
                 <Route path={"/for-your-car"} element={<ForYourCar />} />
+                <Route path={"/chatbot"} element={<ChatBot />} />
                 <Route path={"/contact-us"} element={<Contact />} />
                 <Route path={"/login"} element={<Account />} />
                 <Route path={"/cart"} element={<Cart />} />
                 <Route path="/category/:categoryName" element={<Category />} />
                 <Route path="/item/:itemId" element={<Item />} />
                 <Route path="/service/:serviceId" element={<ServiceDetails />} />
-                 <Route path="/newbookservice" element={<NewBookService />} />
+                <Route path="/newbookservice" element={<NewBookService />} />
                 <Route path="/search" element={<SearchResults />} />
             </Routes>
         </BrowserRouter>

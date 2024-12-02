@@ -5,8 +5,8 @@
     margin-bottom: 70px;
 }
 
-h1 {
-    color: var(--color-medium);
+.category-page-container h1 {
+    color: var(--color-medium)
 }
 
 .sort-dropdown {
