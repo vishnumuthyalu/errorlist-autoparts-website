@@ -1,3 +1,5 @@
+@import '../vars.css';
+
 .item-details-container {
     display: flex;
     align-items: center;
@@ -9,6 +11,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     max-width: 900px;
+    font-family: var(--font-primary), sans-serif;
 }
 
 .item-image {

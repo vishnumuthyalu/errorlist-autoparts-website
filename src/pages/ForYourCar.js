@@ -1,7 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { firestore } from '../backend/firebase';
-import { doc, getDoc, collection } from "firebase/firestore";
+import { useState} from 'react';
 import "../styles/ForYourCar.css";
 
 function ForYourCar() {

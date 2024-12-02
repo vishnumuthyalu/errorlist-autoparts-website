@@ -105,6 +105,10 @@
     cursor: pointer;
 }
 
+.submit:hover {
+    background-color: #e36902;
+}
+
 .gray {
     background: #676767;
     color: #EAEAEA;

@@ -4,12 +4,11 @@
     font-family: var(--font-primary), sans-serif;
     text-align: center;
     padding: 20px;
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
 .contact-container h1 {
-    color: var(--color-light);
+    color: var(--color-medium);
     margin-bottom: 30px;
     font-size: 2.5rem;
 }

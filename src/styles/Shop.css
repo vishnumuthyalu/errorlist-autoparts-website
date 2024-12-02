@@ -9,6 +9,7 @@
 .shop-container h2 {
     color: var(--color-medium);
     padding-top: 20px;
+    font-size: 2rem;
 }
 
 .product-list-shop {
@@ -90,4 +91,8 @@
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
+}
+
+.show-more-button:hover {
+    background-color: #db9725;
 }
