@@ -1,10 +1,15 @@
+@import '../vars.css';
+
 .book-service-container {
     padding: 20px;
     max-width: 500px;
     margin: 0 auto;
-    background-color: #f4f4f4;
-    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    font-family: var(--font-primary), sans-serif;
 }
 
 h1 {
@@ -39,30 +44,15 @@ input:focus {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 .submit-button:hover {
-    background-color: var(--color-dark);
+    background-color: #e36902;
 }
 
 .success-message {
     text-align: center;
     font-size: 18px;
     color: var(--color-medium);
-}
-
-.back-button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #0056b3;
 }

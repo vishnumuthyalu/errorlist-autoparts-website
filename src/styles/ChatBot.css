@@ -6,16 +6,15 @@
     align-items: center;
     font-family: var(--font-primary), sans-serif;
     padding: 10px;
-    background-color: #f9f9f9;
     height: 100vh;
     width: 100%;
     margin-bottom: 70px;
 }
 
-h1 {
-    font-size: 24px;
+.chatbot-container h1 {
     color: var(--color-medium);
-    padding-top: 20px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
 }
 
 .caption{
@@ -39,11 +38,11 @@ h1 {
 
 .user-message {
     align-self: flex-end;
-    background-color: #4caf50;
+    background-color: var(--color-dark);
     color: white;
     padding: 10px 15px;
     margin: 5px 0;
-    margin-left: auto; /* Ensure the message aligns to the right */
+    margin-left: auto;
     border-radius: 15px 15px 0 15px;
     max-width: 75%;
     word-wrap: break-word;
@@ -55,21 +54,21 @@ h1 {
     color: #333;
     padding: 10px 15px;
     margin: 5px 0;
-    margin-right: auto; /* Ensure the message aligns to the left */
+    margin-right: auto;
     border-radius: 15px 15px 15px 0;
     max-width: 75%;
     word-wrap: break-word;
 }
 
 
-.input-container {
+.chat-input-container {
     display: flex;
     width: 100%;
     max-width: 600px;
     gap: 10px;
 }
 
-input[type="text"] {
+.chat-input[type="text"] {
     flex-grow: 1;
     padding: 10px;
     border: 1px solid #ddd;
@@ -78,13 +77,13 @@ input[type="text"] {
     outline: none;
 }
 
-input[type="text"]:focus {
-    border-color: #4caf50;
+.chat-input[type="text"]:focus {
+    border-color: var(--color-light);
 }
 
-button {
+.chat-btn {
     padding: 10px 15px;
-    background-color: #4caf50;
+    background-color: var(--color-light);
     color: white;
     border: none;
     border-radius: 4px;
@@ -92,15 +91,15 @@ button {
     font-size: 16px;
 }
 
-button:hover {
-    background-color: #45a049;
+.chat-btn:hover {
+    background-color: #db9725;
 }
 
-button:active {
-    background-color: #3e8e41;
+.chat-btn:active {
+    background-color: var(--color-light);
 }
 
-button:disabled {
+.chat-btn:disabled {
     background-color: #9e9e9e;
     cursor: not-allowed;
 }

@@ -2,11 +2,14 @@
 
 .service-container {
     margin-bottom: 70px;
+    font-family: var(--font-primary), sans-serif;
 }
 
 .service-container h1 {
     color: var(--color-medium);
     padding-top: 20px;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
 }
 .service-list {
     display: grid;

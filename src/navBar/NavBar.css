@@ -10,7 +10,7 @@
 }
 
 .nav-logo {
-    width: 100px; /* Adjust the size of the logo */
+    width: 100px;
     height: auto;
 }
 
@@ -31,7 +31,6 @@
     letter-spacing: 0.1em;
 }
 
-/* css for the main links */
 .nav-container .center-links {
     display: flex;
     justify-content: center;
@@ -48,7 +47,6 @@
     position: relative;
 }
 
-/* underline transition css */
 .nav-container .center-links a::after {
     content: '';
     position: absolute;
@@ -72,7 +70,6 @@
     padding: 0;
 }
 
-/* css for the search bar/box animations */
 .search-box {
     display: flex;
     align-items: center;
@@ -83,7 +80,7 @@
 }
 
 .search-box.active {
-    width: 350px;
+    width: 300px;
     opacity: 1;
 }
 
@@ -118,7 +115,6 @@
     color: var(--color-bg);
 }
 
-/* css for the rest of the icons after search bar */
 nav ul li button {
     background-color: transparent;
     border: none;

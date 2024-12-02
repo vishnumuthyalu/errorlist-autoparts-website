@@ -67,14 +67,15 @@ export const ChatBot = () => {
                     </div>
                 ))}
             </div>
-            <div className="input-container">
+            <div className="chat-input-container">
                 <input
+                    className={"chat-input"}
                     type="text"
                     value={input}
                     onChange={handleInputChange}
                     placeholder="Type your message here..."
                 />
-                <button onClick={handleSendMessage}>Send</button>
+                <button className={"chat-btn"} onClick={handleSendMessage}>Send</button>
             </div>
         </div>
     );

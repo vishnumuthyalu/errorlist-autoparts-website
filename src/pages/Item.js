@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { firestore } from '../backend/firebase';
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import '../styles/Item.css';
@@ -9,6 +9,7 @@ export const Item = () => {
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchItem = async () => {
@@ -45,7 +46,7 @@ export const Item = () => {
                 quantity: 1, // Default quantity when first added
             });
             console.log("Item added to cart:", product);
-            alert(product.Name + " has been added to the cart.");
+            // alert(product.Name + " has been added to the cart.");
         } catch (error) {
             console.error("Error adding to cart:", error);
         }
@@ -70,6 +71,7 @@ export const Item = () => {
                             onClick={(event) => {
                                 event.stopPropagation();
                                 addToCart(item);
+                                navigate(`/cart`);
                                 }}
                                 >
                                     Add To Cart
